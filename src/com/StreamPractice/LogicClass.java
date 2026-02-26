@@ -1,11 +1,9 @@
 package com.StreamPractice;
 
 import java.util.*;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class LogicClass {
 	
@@ -113,6 +111,243 @@ public class LogicClass {
 		
 		return answer;
 	}
+	
+	public static Map<Integer, List<Integer>>groupElementsInRange(int[] input)
+	{
+		List<Integer> list = Arrays.stream(input).boxed().collect(Collectors.toList());
+		
+		Map<Integer, List<Integer>> groupedMap =list.stream()
+		.collect(Collectors.groupingBy(x->x/10*10,TreeMap::new ,Collectors.toList()));
+		
+	    return groupedMap;
+	}
+	
+	public static List<Integer> getIntegersOnly(String[] input)
+	{
+	List<Integer> list=	Arrays.stream(input)
+		.filter(x->x.matches("[0-9]+")).map(Integer::valueOf)
+		.collect(Collectors.toList());
+	
+	return list;
+	
+		
+	}
+	public static List<String> getStringsOnly(String[] input)
+	{
+		 List<String> StringList=Arrays.stream(input).filter(x->x.matches("[a-zA-z]+"))
+		.collect(Collectors.toList());
+		 
+		 return StringList;
+		
+	}
+	
+	public static List<Integer> getSquareOfFirstTwo(int[] input)
+	{
+		List<Integer> productList =Arrays.stream(input).boxed().collect(Collectors.toList())
+		.stream().limit(2).map(x->x*x).collect(Collectors.toList());
+		
+	    return productList;
+	}
+	public static Integer getProductOfFirst_N_number(int[] input,int n)
+	{
+		int answer =Arrays.stream(input).boxed().collect(Collectors.toList())
+		.stream().limit(n).reduce(1,(a,b)->a*b);
+		
+		return answer;
+	}
+	
+	public static List<List<String>> getListOfAnagrams(String input)
+	{
+		//this is incorrect approach it gives all angrams converted in list by its own word
+//		List<List<String>> answer= Arrays.stream(input.split(" ")).sorted()
+//		.collect(Collectors.groupingBy(Function.identity(),Collectors.toList()))
+//		.entrySet().stream().map(x->x.getValue()).collect(Collectors.toList());
+		
+		List<List<String>> answer=Arrays.stream(input.split(" "))
+        .collect(Collectors.groupingBy(word -> {
+            char[] charArray = word.toCharArray();
+            Arrays.sort(charArray);
+            return new String(charArray);
+        }))
+        .values()
+        .stream()
+        .collect(Collectors.toList());
+		
+		return answer;
+	}
+	
+	public static Integer multiplyAlternativeElements(int[] input,String category)
+	{
+		if(category.equalsIgnoreCase("even"))
+		{
+		int evenanswer=IntStream.range(0, input.length).filter(x->x%2==0)
+				.map(x->input[x])
+				.reduce(1,(a,b)->a*b);
+		
+		return evenanswer;
+		}
+		
+		if(category.equalsIgnoreCase("odd"))
+		{
+		int evenanswer=IntStream.range(0, input.length).filter(x->x%2!=0)
+				.map(x->input[x])
+				.reduce(1,(a,b)->a*b);
+		
+		return evenanswer;
+		}
+		
+		return -1;
+	}
+	
+	public static Integer multiplyFirstandLastElements(int[] input)
+	{
+		
+	  int answer=IntStream.of(0,input.length-1).map(x->input[x]).reduce(1,(a,b)->a*b);
+	  return answer;
+	}
+	
+	public static void multiplyFirstandLastAndSoOnElements(int[] input)
+	{
+		
+		IntStream.range(0, input.length/2).map(x->input[x]*input[input.length-x-1])
+		.forEach(System.out::println);
+	}
+	
+	public static List<Integer> moveAllZerosOnCondition(int[] input,String zeroLocation)
+	{
+	   //approach 1: make two sub list one is of zero, one without zeores and then combine it
+		
+		List<Integer> mainList= Arrays.stream(input).boxed().collect(Collectors.toList());
+		List<Integer> zeroList=mainList.stream().filter(x->x==0).collect(Collectors.toList());
+		List<Integer> NonzeroList=mainList.stream().filter(x->x!=0).collect(Collectors.toList());
+		List<Integer> frontzero= new ArrayList<>();
+		List<Integer> Lastzero= new ArrayList<>();
+		
+		if(zeroLocation.equalsIgnoreCase("front"))
+		{
+			frontzero.addAll(zeroList);
+			frontzero.addAll(NonzeroList);
+			
+			return frontzero;
+			
+		}
+		if(zeroLocation.equalsIgnoreCase("last"))
+		{
+			Lastzero.addAll(NonzeroList);
+			Lastzero.addAll(zeroList);
+			
+			return Lastzero;
+			
+		}
+		
+		return Arrays.asList(0);
+	}
+		
+	public static List<Integer> moveAllZerosOnCondition_Approach2(int[] input,String zeroLocation)
+	{
+		//approach 2: using partitioned by+values+flatMap
+		
+		if(zeroLocation.equalsIgnoreCase("last"))
+		{
+		List<Integer> lastZero= Arrays.stream(input).boxed().collect(Collectors.toList())
+		.stream().collect(Collectors.partitioningBy(x->x==0))
+		.values().stream().flatMap(x->x.stream()).collect(Collectors.toList());
+		
+		return lastZero;
+		}
+		
+		if(zeroLocation.equalsIgnoreCase("front"))
+		{
+			List<Integer> frontZero=Arrays.stream(input).boxed().collect(Collectors.toList())
+			.stream().collect(Collectors.partitioningBy(x->x!=0))
+			.values().stream().flatMap(x->x.stream()).collect(Collectors.toList());
+		
+			return frontZero;
+			
+			
+		}
+		
+		
+		return null;
+		
+	}
+	
+	
+	public static boolean isArrayHaveUniqueValues(int[] input)
+	{
+		boolean answer = Arrays.stream(input).boxed().collect(Collectors.toList())
+		.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()))
+		.entrySet().stream().noneMatch(x->x.getValue()>1);
+		
+		
+		
+		return answer;
+		//apprach 2
+//		return Arrays.stream(input)
+//                .distinct()
+//                .count() == input.length;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

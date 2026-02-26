@@ -63,6 +63,160 @@ public class MainApp {
 		String Que12="klmaabcbdeff";
 		System.out.println("12.First repeating character : "+LogicClass.getFirsRepeatedChar(Que12));
 
+		System.out.println("**********************************");
+		//13.Group number by the range
+		int[] Que13= {5,9,14,10,24,20,34,33,44,46,58,54};
+		System.out.println("13.Group number by the range: "+LogicClass.groupElementsInRange(Que13));
+
+		System.out.println("**********************************");
+		//14.Find integers in String array
+		String[] Que14= {"Rphit","Nit","88","Pal","99"};
+		System.out.println("14.Find integers only in String array : "+LogicClass.getIntegersOnly(Que14));
+		System.out.println("14-b.Find words only in String array : "+LogicClass.getStringsOnly(Que14));
+
+		System.out.println("**********************************");
+		//15.Find product of first N elements
+		int[] Que15= {5,9,2,10,24,20,34,33,44,46,58,54};
+		int N_numberInput=3;
+		System.out.println("15-B.Find square of first two elements idividually : "+LogicClass.getSquareOfFirstTwo(Que15));
+		System.out.println("15.Find product of first N elements : "+LogicClass.getProductOfFirst_N_number(Que15,N_numberInput));
+		
+		System.out.println("**********************************");
+		//16.Find List of anagrams from String 
+		String Que16="pat pan tap team nap meat tree";
+		System.out.println("16.Find List of anagrams from String  : "+LogicClass.getListOfAnagrams(Que16));
+		
+		
+		System.out.println("**********************************");
+		//17.Multiply alternative elements from array
+		int[] Que17= {5,9,1,10,4,6,3};
+		String categeory="odd";
+		System.out.println("17.Multiply alternative elements from array : "+LogicClass.multiplyAlternativeElements(Que17,categeory));
+		
+		System.out.println("******************************************");
+		//18.Multiply 1st element and last from array
+		int[] Que18= {5,9,1,10,4,6,3};
+		System.out.println("18.Multiply 1st element and last from array : "+LogicClass.multiplyFirstandLastElements(Que18));
+//		System.out.println("18-b.Multiply 1st & last,2nd & 2nd last and ....so on from array : ");
+//		LogicClass.multiplyFirstandLastAndSoOnElements(Que18);
+		
+		System.out.println("******************************************");
+		//19.Move all zeroes on Condition from array
+		int[] Que19= {5,9,0,0,4,0,3};
+		String zeroLocation="FRONT";
+		System.out.println("19.Move all zeroes on Condition from array : "+LogicClass.moveAllZerosOnCondition(Que19,zeroLocation));
+		System.out.println("19(Approach 2).Move all zeroes on Condition from array : "+LogicClass.moveAllZerosOnCondition_Approach2(Que19,zeroLocation));
+		
+		System.out.println("******************************************");
+		//20.Check is all value from array are distinct or not
+		int[] Que20= {5,9,0,0,4,0,3};
+		System.out.println("20.Check is all value from array are distinct or not : "+LogicClass.isArrayHaveUniqueValues(Que20));
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
 	}
 
 }
