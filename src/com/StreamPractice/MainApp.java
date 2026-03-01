@@ -2,6 +2,8 @@ package com.StreamPractice;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MainApp {
 
@@ -157,21 +159,64 @@ public class MainApp {
 		int kposition=2;
 		System.out.println("27.Find Kth smallest number from List : "+LogicClass.finfKthSmallestNumber(Que27, kposition));
 		
+		System.out.println("******************************************");
+		//28.Get only neumeric values skip characters
+		List<String> Que28= List.of("ro23p","patil123","n1i8t0l","999");
+		System.out.println("28.Get only neumeric values skip characters : "+LogicClass.getOnlyINTvalues(Que28));
+		
+		
+		System.out.println("******************************************");
+		//29.Get only numbers from list
+		List<String> Que29= List.of("333","ro23p","patil123","n1i8t0l","999","rohit","888","patil");
+		System.out.println("29.Get only numbers from list : "+LogicClass.getOnlyNumbers(Que29));
+		
+		System.out.println("******************************************");
+		//30.Convert list to upper case
+		List<String> Que30= List.of("maharaj","ro23p","patil123","N1I8T0L","999","rohit","888","patil");
+		System.out.println("30.Convert list to upper case : "+LogicClass.convertListToUpperCase(Que30));
+		
+		System.out.println("******************************************");
+		//31.Find avg of all numbers from list
+		List<Integer> Que31= List.of(6,7,5,4,1);
+		System.out.println("31.Find avg of all numbers from list : "+LogicClass.getAvgOfAll(Que31));
+		
+		System.out.println("******************************************");
+		//32.Find intersection of two list
+		List<Integer> Que32_a= List.of(6,7,9,8,0);
+		List<Integer> Que32_b= List.of(6,7,5,4,1);
+		System.out.println("31.Find avg of all numbers from list : "+LogicClass.findCommanElements(Que32_a, Que32_b));
+		
+		
+System.out.println("***********************************************************************************************");
+		
+		//Playing with custom objects list
 		
 		
 		
+		  List<Employee> employees = Arrays.asList(
+
+	                new Employee(101, "Rohit Sharma", "rohit@gmail.com", "Backend Developer", "IT", 75000),
+	                new Employee(102, "Anita Verma", "anita@yahoo.com", "QA Engineer", "Testing", 65000),
+	                new Employee(103, "Suresh Patil", "suresh@rahu.com", "DevOps Engineer", "Operations", 85000),
+	                new Employee(104, "Priya Singh", "priya@gmail.com", "Frontend Developer", "IT", 70000),
+	                new Employee(105, "Amit Kulkarni", "amit@yahoo.com", "Business Analyst", "Business", 72000),
+	                new Employee(106, "Neha Joshi", "neha@rahu.com", "HR Manager", "HR", 60000),
+	                new Employee(107, "Vikas Rao", "vikas@gmail.com", "Tech Lead", "IT", 95000),
+	                new Employee(108, "Sneha Iyer", "sneha@yahoo.com", "UI/UX Designer", "Design", 68000),
+	                new Employee(109, "Ramesh Gupta", "ramesh@rahu.com", "System Admin", "Operations", 78000),
+	                new Employee(110, "Pooja Mehta", "pooja@gmail.com", "Product Manager", "Product", 92000),
+	                new Employee(111, "Karan Shah", "karan@yahoo.com", "Support Engineer", "Support", 55000),
+	                new Employee(112, "Divya Nair", "divya@rahu.com", "Data Analyst", "Analytics", 73000),
+	                new Employee(113, "Arjun Desai", "arjun@gmail.com", "Cloud Engineer", "IT", 88000),
+	                new Employee(114, "Meena Reddy", "meena@yahoo.com", "Scrum Master", "Agile", 81000),
+	                new Employee(115, "Rahul Chavan", "rahul@rahu.com", "Security Engineer", "Security", 90000)
+	        );
+
+		//33.Find occurance of @gmail.com,... domains 
+		Map<String, Long>answer =employees.stream()
+		.collect(Collectors.groupingBy(x->x.getEmail().substring(x.getEmail().indexOf("@")),Collectors.counting()));
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		System.out.println(answer);
 		
 		
 		

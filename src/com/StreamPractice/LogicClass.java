@@ -356,12 +356,66 @@ public class LogicClass {
 		return answer;
 	}
 	
+	public static List<String> getOnlyINTvalues(List<String> input)
+	{
+		List<String> answer=input.stream().map(word->word.replaceAll("[a-zA-Z]", ""))
+		.collect(Collectors.toList());
+		
+		return answer;
+	}
+	
+	public static List<String> getOnlyNumbers(List<String> input)
+	{
+		List<String> answer=input.stream().filter(word->word.matches("[0-9]+"))
+				.collect(Collectors.toList());
+		
+		return answer;
+		
+	}
+	
+	public static List<String> convertListToUpperCase(List<String> input)
+	{
+		List<String> answer=input.stream().map(word->word.toUpperCase())
+		.collect(Collectors.toList());
+		
+		
+		return answer;
+	}
+	
+	public static double getAvgOfAll(List<Integer> input)
+	{
+		
+	double answer=input.stream().mapToDouble(Integer::doubleValue).average().getAsDouble();
+	return answer;
+		
+	}
 	
 	
+	public static List<Integer> findCommanElements(List<Integer> input1,List<Integer> input2)
+	{
+		//with out using stream :
+//		Set<Integer> set = new HashSet<>();
+//		List<Integer> answer=new ArrayList<>();
+//		for(Integer element:input1)
+//		{
+//			set.add(element);
+//			
+//		}
+//		for(Integer element2:input2)
+//		{
+//			if(set.contains(element2))
+//			{
+//				answer.add(element2);
+//			}
+//			
+//		}
+		List<Integer> answer= input1.stream().filter(input2::contains).collect(Collectors.toList());
+		
+		
+		return answer;
+	}
 	
-	
-	
-	
+		
 	
 	
 	
