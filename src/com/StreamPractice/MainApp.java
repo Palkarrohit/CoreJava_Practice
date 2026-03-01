@@ -1,5 +1,8 @@
 package com.StreamPractice;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class MainApp {
 
 	public static void main(String[] args) {
@@ -113,19 +116,46 @@ public class MainApp {
 		System.out.println("20.Check is all value from array are distinct or not : "+LogicClass.isArrayHaveUniqueValues(Que20));
 		
 		
+		System.out.println("******************************************");
+		//21.Group by using middle  char of string
+		String[] Que21= {"rohit","nital","shital","mohit","zeb","pa"};
+		System.out.println("21.Group by using middle  char of string : "+LogicClass.groupbyMiddlecChar(Que21));
 		
 		
+		System.out.println("******************************************");
+		//22.Get sum of all elements from List
+		List<Integer> Que22= List.of(5,9,0,0,4,0,3);
+		System.out.println("22.Get sum of all elements from List : "+LogicClass.sumOfAllElementsOfList(Que22));
 		
 		
+		System.out.println("******************************************");
+		//23.Sort all elements from List
+		List<String> Que23= Arrays.asList("pat", "pan" ,"tap" ,"team", "nap", "meat", "tree"); 
+		System.out.println("23.Sort all elements from List : "+LogicClass.sortList(Que23));
+		
+		System.out.println("******************************************");
+		//24.Take square of all elements from List
+		List<Integer> Que24= List.of(5,9,0,0,4,0,3);
+		System.out.println("24.Take square of all elements from List: "+LogicClass.getSquareOfAllFromList(Que24));
+		
+		System.out.println("******************************************");
+		//25.Take unique Odd numbers from List
+		List<Integer> Que25= List.of(5,9,0,9,4,0,3,6,7,5,4,1);
+		System.out.println("25.Take unique Odd numbers from List : "+LogicClass.getUniqueOddFromList(Que25));
+		
+		System.out.println("******************************************");
+		//26.Join two List on condition
+		List<Integer> Que26_a= List.of(5,9,0,9,4,0,3,6,7,5,4,1);
+		List<Integer> Que26_b= List.of(6,7,5,4,1);
+		String condition="uniqueOnly";
+		System.out.println("26.Join two List on condition : "+LogicClass.joinTwoList(Que26_a, Que26_b, condition));
 		
 		
-		
-		
-		
-		
-		
-		
-		
+		System.out.println("******************************************");
+		//27.Find Kth smallest number from List 
+		List<Integer> Que27= List.of(5,9,0,9,4,15,3,6,7,5,4,1);
+		int kposition=2;
+		System.out.println("27.Find Kth smallest number from List : "+LogicClass.finfKthSmallestNumber(Que27, kposition));
 		
 		
 		

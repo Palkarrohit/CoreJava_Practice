@@ -2,8 +2,10 @@ package com.StreamPractice;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class LogicClass {
 	
@@ -289,15 +291,70 @@ public class LogicClass {
 	}
 	
 	
+	public static Map<Character, List<String>> groupbyMiddlecChar(String[] input)
+	{
+		Map<Character, List<String>> answer =Stream.of(input).collect(Collectors.groupingBy(word->word.charAt(word.length()/2),Collectors.toList()));
+		
+		return answer;
+		
+	}
+	
+	public static Integer sumOfAllElementsOfList(List<Integer> input)
+	{
+		int answer=input.stream().mapToInt(Integer::valueOf).sum();
+		return answer;
+		
+	}
+	
+	public static List<String> sortList(List<String> input)
+	{
+	
+	List<String> answer=input.stream().sorted().collect(Collectors.toList());
+	
+	return answer;
+	
+	}
+	
+	public static List<Integer> getSquareOfAllFromList(List<Integer> input)
+	{
+		List<Integer> answer= input.stream().map(x->x*x).collect(Collectors.toList());
+		
+		return answer;
+	}
+	
+	public static List<Integer> getUniqueOddFromList(List<Integer> input)
+	{
+		
+		List<Integer> answer= input.stream().distinct().filter(x->x%2!=0).collect(Collectors.toList());
+		return answer;
+	}
 	
 	
+	public static List<Integer> joinTwoList(List<Integer> input1,List<Integer> input2,String Condition)
+	{
+		if(Condition.equalsIgnoreCase("unionALL"))
+		{
+		List<Integer>  alljoinedList=Stream.concat(input1.stream(), input2.stream()).collect(Collectors.toList());
+		
+		return alljoinedList;
+		}
+		
+		if(Condition.equalsIgnoreCase("uniqueOnly"))
+		{
+		List<Integer>  uniquejoinedList=Stream.concat(input1.stream(), input2.stream()).distinct().collect(Collectors.toList());
+		
+		return uniquejoinedList;
+		}
+		
+		return null;
+	}
 	
-	
-	
-	
-	
-	
-	
+	public static Integer finfKthSmallestNumber(List<Integer> input,int k)
+	{
+		int answer=input.stream().distinct().sorted().skip(k-1).findFirst().orElse(0);
+		
+		return answer;
+	}
 	
 	
 	
