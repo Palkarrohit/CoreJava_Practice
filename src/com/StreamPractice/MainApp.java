@@ -219,9 +219,15 @@ System.out.println("************************************************************
 		System.out.println(answer);
 		
 		
+		System.out.println("******************************************");
+		//37.Group by first character and count the number of String in each group.
+		List<String> Que37= List.of("Nital","rohit","rakesh","neha","nayan","pavan");
+		System.out.println("37.Group by first character and count the number of String in each group. : "+LogicClass.getCountOfWordWithIntials(Que37));
 		
 		
-		
+		System.out.println("******************************************");
+		//38.Convert list of Employees to map
+		System.out.println("38.Convert list of Employees to map : "+LogicClass.convertListToMap(employees));
 		
 		
 		

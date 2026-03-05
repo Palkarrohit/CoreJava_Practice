@@ -415,9 +415,20 @@ public class LogicClass {
 		return answer;
 	}
 	
+	public static Map<Character, Long> getCountOfWordWithIntials(List<String> input1)
+	{
+		Map<Character, Long> answer=input1.stream().map(word->word.toLowerCase())
+		.collect(Collectors.groupingBy(word->word.charAt(0),Collectors.counting()));
 		
+		return answer;
+		
+	}
 	
-	
+	public static Map<String, List<Employee>> convertListToMap(List<Employee> input1)
+	{
+		Map<String, List<Employee>> answer=input1.stream().collect(Collectors.groupingBy(Employee::getDepartment));
+		return answer;
+	}
 	
 	
 	
